@@ -7,7 +7,7 @@ from rest_framework.test import APITestCase
 class PostListViewTests(APITestCase):
     def setUp(self):
         User.objects.create_user(username='Quack', password='quack')
-        
+
     def test_can_list_posts(self):
         quack = User.objects.get(username='Quack')
         Post.objects.create(owner=quack, title='Doggy')
