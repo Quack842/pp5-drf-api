@@ -15,14 +15,6 @@ class PostSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image Size is Larger than 8MB'
             )
-        if value.image.width > 6020:
-            raise serializers.ValidationError(
-                'Image width is Larger than 6020px'
-            )
-        if value.image.height > 4010:
-            raise serializers.ValidationError(
-                'Image height is Larger than 4010px'
-            )
         return value
 
     def get_is_owner(self, obj):
