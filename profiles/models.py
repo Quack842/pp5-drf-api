@@ -4,11 +4,21 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    camera_choices = [
+        ('dslr_camera', 'DSLR Camera'),
+        ('mirrorless_camera', 'Mirrorless Camera'),
+        ('bridge_camera', 'Bridge Camera'),
+        ('compact_digital_camera', 'Compact Digital Camera'),
+        ('smartphone', 'Smartphone'),
+    ]
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
+    camera_type = models.CharField(
+        max_length=100, choices=camera_choices, default='all'
+    )
     image = models.ImageField(
         upload_to='images/', default='../default-profile_koct6q'
     )

@@ -42,10 +42,10 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=25)
     camera_type = models.CharField(
-        max_length=32, choices=camera_choices, default='other'
+        max_length=100, choices=camera_choices, default='other'
     )
     photo_type = models.CharField(
-        max_length=32, choices=photo_type_choices, default='other'
+        max_length=100, choices=photo_type_choices, default='other'
     )
     content = models.TextField(blank=True)
     image = models.ImageField(
