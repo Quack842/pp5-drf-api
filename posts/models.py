@@ -32,6 +32,7 @@ class Post(models.Model):
         ('night', 'Night'),
         ('objects', 'Objects'),
         ('people', 'People'),
+        ('sport', 'Sport'),
         ('transportation', 'Transportation'),
         ('water', 'Water'),
         ('wedding', 'Wedding'),
