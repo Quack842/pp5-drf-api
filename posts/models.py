@@ -8,11 +8,11 @@ class Post(models.Model):
     Default image set so that we can always reference image.url.
     """
     camera_choices = [
-        ('DSLR Camera', 'DSLR Camera'),
-        ('Mirrorless Camera', 'Mirrorless Camera'),
-        ('Bridge Camera', 'Bridge Camera'),
-        ('Compact Digital Camera', 'Compact Digital Camera'),
-        ('Smartphone', 'Smartphone'),
+        ('dslr_camera', 'DSLR Camera'),
+        ('mirrorless_camera', 'Mirrorless Camera'),
+        ('bridge_camera', 'Bridge Camera'),
+        ('compact_digital_camera', 'Compact Digital Camera'),
+        ('smartphone', 'Smartphone'),
     ]
 
     photo_type_choices = [
@@ -43,10 +43,10 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=25)
     camera_type = models.CharField(
-        max_length=100, choices=camera_choices, default='other'
+        max_length=100, choices=camera_choices, default='Other'
     )
     photo_type = models.CharField(
-        max_length=100, choices=photo_type_choices, default='other'
+        max_length=100, choices=photo_type_choices, default='Other'
     )
     content = models.TextField(blank=True)
     image = models.ImageField(
