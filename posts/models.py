@@ -8,11 +8,11 @@ class Post(models.Model):
     Default image set so that we can always reference image.url.
     """
     camera_choices = [
-        ('DSLR Camera', 'dslr_camera'),
-        ('Mirrorless Camera', 'mirrorless_camera'),
-        ('Bridge Camera', 'bridge_camera'),
-        ('Compact Digital Camera', 'compact_digital_camera'),
-        ('Smartphone','smartphone'),
+        ('DSLR Camera', 'DSLR Camera'),
+        ('Mirrorless Camera', 'Mirrorless Camera'),
+        ('Bridge Camera', 'Bridge Camera'),
+        ('Compact Digital Camera', 'Compact Digital Camera'),
+        ('Smartphone', 'Smartphone'),
     ]
 
     photo_type_choices = [
