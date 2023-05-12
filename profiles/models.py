@@ -17,7 +17,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     camera_type = models.CharField(
-        max_length=100, choices=camera_choices, default='all'
+        max_length=100, choices=camera_choices, default='All'
     )
     image = models.ImageField(
         upload_to='images/', default='../default-profile_koct6q'
