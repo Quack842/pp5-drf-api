@@ -20,7 +20,7 @@ class Profile(models.Model):
         max_length=100, choices=camera_choices, default='all'
     )
     image = models.ImageField(
-        upload_to='images/', default='default-profile_eu7hoo'
+        upload_to='images/', default='../default-profile_eu7hoo'
     )
 
     class Meta:
