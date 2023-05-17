@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 import re
 import dj_database_url
+import validators
 
 if os.path.exists("env.py"):
     import env
@@ -170,7 +171,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CustomPasswordValidator",
+        "NAME": "django.contrib.auth.validators.CustomPasswordValidator",
     },
 ]
 
