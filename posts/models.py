@@ -57,8 +57,8 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=25)
-    camera_type = models.CharField(CameraType, max_length=100)
-    photo_type = models.CharField(PhotoType, max_length=100)
+    camera_type = models.ForeignKey(CameraType, on_delete=models.PROTECT)
+    photo_type = models.ForeignKey(PhotoType,  on_delete=models.PROTECT)
     content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_yyxugh', blank=True
