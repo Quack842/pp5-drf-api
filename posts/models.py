@@ -2,8 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class CameraType(models.Model):
-    CAMERA_CHOICES = [
+class Post(models.Model):
+    """
+    Post model, related to 'owner', i.e. a User instance.
+    Default image set so that we can always reference image.url.
+    """
+    camera_choices = [
         ('dslr_camera', 'DSLR Camera'),
         ('mirrorless_camera', 'Mirrorless Camera'),
         ('bridge_camera', 'Bridge Camera'),
@@ -11,14 +15,7 @@ class CameraType(models.Model):
         ('smartphone', 'Smartphone'),
     ]
 
-    name = models.CharField(max_length=100, choices=CAMERA_CHOICES)
-
-    def __str__(self):
-        return self.name
-
-
-class PhotoType(models.Model):
-    PHOTO_CHOICES = [
+    photo_type_choices = [
         ('abstract', 'Abstract'),
         ('action', 'Action'),
         ('animals', 'Animals'),
@@ -35,30 +32,22 @@ class PhotoType(models.Model):
         ('night', 'Night'),
         ('objects', 'Objects'),
         ('people', 'People'),
-        ('sports', 'Sports'),
+        ('sport', 'Sport'),
         ('transportation', 'Transportation'),
         ('water', 'Water'),
         ('wedding', 'Wedding'),
-        ('other', 'Other'),
     ]
 
-    name = models.CharField(max_length=100, choices=PHOTO_CHOICES)
-
-    def __str__(self):
-        return self.name
-
-
-class Post(models.Model):
-    """
-    Post model, related to 'owner', i.e. a User instance.
-    Default image set so that we can always reference image.url.
-    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=25)
-    camera_type = models.ForeignKey(CameraType, on_delete=models.PROTECT)
-    photo_type = models.ForeignKey(PhotoType,  on_delete=models.PROTECT)
+    camera_type = models.CharField(
+        max_length=100, choices=camera_choices, default='Other'
+    )
+    photo_type = models.CharField(
+        max_length=100, choices=photo_type_choices, default='Other'
+    )
     content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_yyxugh', blank=True
