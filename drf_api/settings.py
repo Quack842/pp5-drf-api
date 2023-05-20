@@ -55,6 +55,7 @@ ALLOWED_HOSTS = [
     os.environ.get("ALLOWED_HOST"),
     "localhost",
     "127.0.0.1",
+    "8000-quack842-pp5drfapi-u7gip1hg8pw.ws-eu97.gitpod.io",
 ]
 
 
